@@ -1,0 +1,22 @@
+version: "2"
+services:
+
+  web:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"
+
+
+volumes:
+  mongodata:
